@@ -2,14 +2,18 @@ XRAY搭建教程
 
 准备工作
 1、VPS 准备 Debian 9+
+
 2、域名解析到VPS 的IP 上
 
 申请SSL证书
 
 apt update -y
 apt install -y curl
+
 apt install -y socat
+
 curl https://get.acme.sh | sh
+
 ~/.acme.sh/acme.sh --register-account -m xxx@xxx.xxx
 
 #更换真实邮箱成功率更高
@@ -27,8 +31,11 @@ curl https://get.acme.sh | sh
 但别随便乱用网速搜的BBR脚本，很容易搞崩！！！
 
 echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
+
 echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
+
 sysctl -p
+
 lsmod | grep bbr
 
 #打完最后一步，应看到 20480 或 16384 说明BBR 开启成功
@@ -38,4 +45,5 @@ lsmod | grep bbr
 bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
 
 私钥路径：/root/private.key
+
 公钥路径：/root/cert.crt
