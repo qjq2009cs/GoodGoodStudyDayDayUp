@@ -1,4 +1,4 @@
-开启root登陆
+</B开启root登陆/>
 
 sudo su
 
@@ -44,6 +44,7 @@ reboot 重启
 
 
 准备工作
+
 1、VPS 准备 Debian 9+
 
 2、域名解析到VPS 的IP 上
