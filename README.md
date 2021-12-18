@@ -8,6 +8,7 @@ XRAY搭建教程
 申请SSL证书
 
 apt update -y
+
 apt install -y curl
 
 apt install -y socat
