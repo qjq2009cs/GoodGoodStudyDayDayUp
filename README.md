@@ -18,6 +18,8 @@ nano /etc/ssh/sshd_config
 
 PermitRootLogin yes
 
+service sshd restart
+
 ctrl+x 保存退出 选择y 然后回车
 
 然后
