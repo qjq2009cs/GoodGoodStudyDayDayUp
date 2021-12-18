@@ -1,4 +1,4 @@
-</B开启root登陆/>
+开启root登陆
 
 sudo su
 
