@@ -28,6 +28,11 @@ reboot
 
 重启服务器。就可以使用root用户名配合秘钥登入了
 
+安装BBRplus
+
+apt-get -y install ca-certificates
+
+wget "https://github.com/chiakge/Linux-NetSpeed/raw/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
 
 
 开启防火墙
