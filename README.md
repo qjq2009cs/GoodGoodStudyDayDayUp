@@ -99,3 +99,83 @@ bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
 私钥路径：/root/private.key
 
 公钥路径：/root/cert.crt
+
+x-ui模板：
+
+{
+  "api": {
+    "services": [
+      "HandlerService",
+      "LoggerService",
+      "StatsService"
+    ],
+    "tag": "api"
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "port": 62789,
+      "protocol": "dokodemo-door",
+      "settings": {
+        "address": "127.0.0.1"
+      },
+      "tag": "api"
+    }
+  ],
+  "outbounds": [
+      {
+      "protocol": "freedom",
+      "settings": {
+         "domainStrategy": "UseIPv6"         
+       },
+      "tag": "IP-V6"
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {},
+      "tag": "blocked"
+    }
+  ],
+  "policy": {
+    "system": {
+      "statsInboundDownlink": true,
+      "statsInboundUplink": true
+    }
+  },
+  "routing": {
+    "rules": [
+      {
+        "type":"field",
+        "domain": [
+          "geosite:netflix"
+        ],
+        "inboundTag":  [
+          "all-in"
+         ],
+        "outboundTag": "IP-V6"
+      },
+      {
+        "inboundTag": [
+          "api"
+        ],
+        "outboundTag": "api",
+        "type": "field"
+      },
+      {
+        "ip": [
+          "geoip:private"
+        ],
+        "outboundTag": "blocked",
+        "type": "field"
+      },
+      {
+        "outboundTag": "blocked",
+        "protocol": [
+          "bittorrent"
+        ],
+        "type": "field"
+      }
+    ]
+  },
+  "stats": {}
+}
