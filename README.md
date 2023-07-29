@@ -34,6 +34,9 @@ apt-get -y install ca-certificates
 
 wget "https://github.com/chiakge/Linux-NetSpeed/raw/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
 
+centos专用BBRplus
+wget "https://github.com/a8866051/bbrplus/raw/master/ok_bbrplus_centos.sh" && chmod +x ok_bbrplus_centos.sh && ./ok_bbrplus_centos.sh
+
 
 开启防火墙
 
@@ -189,4 +192,6 @@ deb http://security.debian.org/debian-security buster/updates main
 deb-src http://security.debian.org/debian-security buster/updates main
 deb http://deb.debian.org/debian/ buster-updates main
 deb-src http://deb.debian.org/debian/ buster-updates main
+
+解锁视频限制：wget -N https://raw.githubusercontent.com/fscarmen/warp/main/menu.sh && bash menu.sh d
 
